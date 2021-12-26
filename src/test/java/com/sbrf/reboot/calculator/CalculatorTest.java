@@ -1,5 +1,6 @@
 package com.sbrf.reboot.calculator;
 
+import com.sbrf.reboot.Calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,5 +30,20 @@ class CalculatorTest {
     @Test
     void classHasSevenMethods() {
         assertEquals(7, Calculator.class.getMethods().length - Object.class.getMethods().length);
+    }
+
+    @Test
+    void getMax() {
+        assertEquals(9, new Calculator().getMax(9, 3));
+    }
+
+    @Test
+    void getMin() {
+        assertEquals(3, new Calculator().getMin(9, 3));
+    }
+
+    @Test
+    void getSqrt() {
+        assertEquals(3, new Calculator().getSqrt(9));
     }
 }
