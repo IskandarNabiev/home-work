@@ -55,6 +55,36 @@ class AccountServiceTest {
     }
 
     @Test
+    void addContract() {
+        Set<Long> accounts = new HashSet();
+        accounts.add(28L);
+
+        long clientId = 8L;
+        long contractNumber = 38L;
+
+
+        when(accountRepository.getAllAccountsByClientId(clientId)).thenReturn(accounts);
+        String newContract = accountService.addContract(clientId, contractNumber);
+
+        assertEquals("Contract created", newContract);
+    }
+
+    @Test
+    void existContract() {
+        Set<Long> accounts = new HashSet();
+        accounts.add(18L);
+
+        long clientId = 8L;
+        long contractNumber = 18L;
+
+
+        when(accountRepository.getAllAccountsByClientId(clientId)).thenReturn(accounts);
+        String existingContract = accountService.addContract(clientId, contractNumber);
+
+        assertEquals("Client already has contract", existingContract);
+    }
+
+    @Test
     void repositoryHasTreeMethods() {
         assertEquals(2, AccountRepository.class.getMethods().length);
     }
@@ -63,5 +93,6 @@ class AccountServiceTest {
     void serviceHasTreeMethods() {
         assertEquals(2, AccountService.class.getMethods().length - Object.class.getMethods().length);
     }
+
 
 }
