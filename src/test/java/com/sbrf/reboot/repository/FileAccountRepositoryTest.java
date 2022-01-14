@@ -33,14 +33,16 @@ class FileAccountRepositoryTest {
     }
 
     @Test
-    void failGetAllAccountsByClientId() {
-        long clientId = 1L;
+    void failGetAllAccountsByClientId() throws FileNotFoundException {
+        long clientId = 5L;
 
-        String filePath = "somePath";
+        String filePath = "file";
 
-        accountRepository = new FileAccountRepository(filePath);
-
-        assertThrows(FileNotFoundException.class, () -> accountRepository.getAllAccountsByClientId(clientId));
+        try {
+            accountRepository = new FileAccountRepository(filePath);
+        } catch (FileNotFoundException e) {
+            assertThrows(NullPointerException.class, () -> accountRepository.getAllAccountsByClientId(clientId));
+        }
     }
 
 
