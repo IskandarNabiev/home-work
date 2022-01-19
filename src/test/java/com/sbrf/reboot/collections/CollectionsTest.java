@@ -2,7 +2,7 @@ package com.sbrf.reboot.collections;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,9 +29,11 @@ public class CollectionsTest {
     @Test
     public void addStudentToRating() {
 
-        List<String> students = null;
-
-        //...
+        List<String> students = new ArrayList<>();
+        students.add("Student1");
+        students.add("Student2");
+        students.add("Student3");
+        students.add("Student4");
 
         assertEquals(4, students.size());
     }
@@ -49,9 +51,12 @@ public class CollectionsTest {
     @Test
     public void addMoneyToBox() {
 
-        List<Integer> moneyBox = null;
+        Random random = new Random();
+        Set<Integer> moneyBox = new TreeSet<>();
 
-        //...
+        for (int i = 0; i < 10; i++) {
+            moneyBox.add(random.nextInt(100));
+        }
 
         assertEquals(10, moneyBox.size());
     }
@@ -71,9 +76,10 @@ public class CollectionsTest {
         class Book {
         }
 
-        List<Book> bookshelf = null;
-
-        //...
+        List<Book> bookshelf = new ArrayList<>();
+        bookshelf.add(new Book());
+        bookshelf.add(new Book());
+        bookshelf.add(new Book());
 
         assertEquals(3, bookshelf.size());
     }
