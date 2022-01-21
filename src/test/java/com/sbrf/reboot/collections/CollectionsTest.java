@@ -26,16 +26,22 @@ public class CollectionsTest {
      *
      * Проинициализируйте students, добавьте в нее 4 фамилии студентов что бы тест завершился успешно.
      */
+
+    //Вопрос: Что произойдет в ArrayList, если мы в существующий массив на 0 позицию будем добавлять элементы?
+    //Ответ: Если мы будем ставить элементы на 0 позиции, то все последующие эелементы будут передвигаться
+    //на одну позицию, а наш элемент будет первым в массиве.
+
     @Test
     public void addStudentToRating() {
 
         List<String> students = new ArrayList<>();
-        students.add("Student1");
-        students.add("Student2");
-        students.add("Student3");
-        students.add("Student4");
+        students.add("Иванов");
+        students.add("Петров");
+        students.add("Сидоров");
+        students.add(0,"Козлов");
 
         assertEquals(4, students.size());
+        assertEquals(students.get(0), "Козлов");
     }
 
     /*
