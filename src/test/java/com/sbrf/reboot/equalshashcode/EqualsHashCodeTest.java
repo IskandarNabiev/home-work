@@ -20,11 +20,55 @@ public class EqualsHashCodeTest {
             //Рефлексивность: объект должен равняться самому себе
             if (o == this)
                 return true;
+            // Cравнение объектов двух одинаковых классов и сравнение на null
+            if (o == null || getClass() != o.getClass())
+                return false;
+            //Приведение к типу класса
+            Car otherCarObj = (Car) o;
+            //Симметричность: если a.equals(b) == true, то и b.equals(a) должно возвращать true
+            return model.equals(otherCarObj.model) &&  color.equals(otherCarObj.color) &&
+                    releaseDate.equals(otherCarObj.releaseDate) && maxSpeed == otherCarObj.maxSpeed;
+        }
 
-            return false;
+        @Override
+        public int hashCode() {
+            //Можем умножить каждое поле на 31 или 29, чтобы уменьшить вероятность коллизий
+            int result = maxSpeed;
+            result = result + model.hashCode();
+            result = result + color.hashCode();
+            result = result + releaseDate.hashCode();
+            return result;
         }
 
 
+     }
+
+     class Moto {
+         String model;
+         String color;
+         Calendar releaseDate;
+         int maxSpeed;
+
+
+         @Override
+         public boolean equals(Object o) {
+             if (o == this)
+                 return true;
+             if (o == null || getClass() != o.getClass())
+                 return false;
+             Moto otherMotoObj = (Moto) o;
+             return model.equals(otherMotoObj.model) &&  color.equals(otherMotoObj.color) &&
+                     releaseDate.equals(otherMotoObj.releaseDate) && maxSpeed == otherMotoObj.maxSpeed;
+         }
+
+         @Override
+         public int hashCode() {
+             int result = maxSpeed;
+             result = result + model.hashCode();
+             result = result + color.hashCode();
+             result = result + releaseDate.hashCode();
+             return result;
+         }
      }
 
     @Test
@@ -96,6 +140,23 @@ public class EqualsHashCodeTest {
 
         Assertions.assertNotEquals(car1.hashCode(),car2.hashCode());
 
+    }
+
+    @Test
+    public void notEqualClass() {
+        Car car = new Car();
+        car.model = "Mercedes";
+        car.color = "black";
+        car.releaseDate = new GregorianCalendar(2020, 0, 25);
+        car.maxSpeed = 10;
+
+        Moto moto = new Moto();
+        moto.model = "Mercedes";
+        moto.color = "black";
+        moto.releaseDate = new GregorianCalendar(2020, 0, 25);
+        moto.maxSpeed = 10;
+
+        Assertions.assertTrue(car.equals(moto));
     }
 
 
