@@ -11,6 +11,10 @@ public class JSONUtils {
         return new ObjectMapper().writeValueAsString(obj);
     }
 
+    public static String toJSON(Response obj) throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(obj);
+    }
+
     public static Response JSONtoResponse(String json) throws JsonProcessingException {
         return new ObjectMapper().readValue(json, Response.class);
     }

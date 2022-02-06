@@ -11,12 +11,17 @@ public class XMLUtils {
         return new XmlMapper().writeValueAsString(obj);
     }
 
-    public static Response XMLtoResponse(String xml) throws JsonProcessingException {
-        return new XmlMapper().readValue(xml, Response.class);
+    public static String toXML(Response obj) throws JsonProcessingException {
+        return new XmlMapper().writeValueAsString(obj);
     }
 
     public static Request XMLtoRequest(String xml) throws JsonProcessingException {
         return new XmlMapper().readValue(xml, Request.class);
     }
+
+    public static Response XMLtoResponse(String xml) throws JsonProcessingException {
+        return new XmlMapper().readValue(xml, Response.class);
+    }
+
 
 }
