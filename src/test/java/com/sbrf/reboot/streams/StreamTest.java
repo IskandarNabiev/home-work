@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StreamTest {
 
     /*
-     * Отсортируйте коллекцию integers по возрастанию. Используйте Stream.
+     * Отсортируйте коллекцию integers по возрастанию. Используйте Stream..
      */
     @Test
     public void sortedListStream() {
