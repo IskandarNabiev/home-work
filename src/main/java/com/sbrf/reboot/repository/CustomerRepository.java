@@ -9,6 +9,8 @@ public interface CustomerRepository {
 
     boolean createCustomer(@NonNull String userName, String eMail);
 
+    boolean deleteCustomer(Long id);
+
     List<Customer> getAll();
 
 }

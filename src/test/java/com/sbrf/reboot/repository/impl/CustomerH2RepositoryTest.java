@@ -34,4 +34,14 @@ class CustomerH2RepositoryTest {
 
         assertTrue(mariaCreated);
     }
+
+    @Test
+    void deleteCustomer() {
+
+        boolean mariaDeleted = customerRepository.createCustomer("Maria", "maria98@ya.ru");
+
+        boolean row = customerRepository.deleteCustomer(1L);
+
+        assertTrue(row);
+    }
 }
