@@ -33,9 +33,8 @@ public class CustomerH2Repository implements CustomerRepository {
     Connection conn;
 
     public CustomerH2Repository() {
-        try {
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stm = conn.createStatement();
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stm = conn.createStatement()) {
             stm.executeUpdate(CREATE_TABLE_QUERY);
         } catch (SQLException e) {
             e.printStackTrace();
