@@ -25,7 +25,7 @@ public class SomeService {
 
                 Thread.sleep(Duration.ofSeconds(3).toMillis());
 
-                if (reportResult.equals("SUCCESS")) {
+                if (reportResult.get().equals("SUCCESS")) {
                     System.out.println("Отчет отправлен успешно");
                 }
 
